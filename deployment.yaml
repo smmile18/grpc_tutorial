@@ -1,0 +1,26 @@
+##################################################################################################
+# client service
+##################################################################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-client
+  labels:
+    app: lab-client
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab-client
+  template:
+    metadata:
+      labels:
+        app: lab-client
+    spec:
+      containers:
+        - name: lab-client
+          image: smmile18/lab-client:1.6
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: lab-client
+              containerPort: 8080

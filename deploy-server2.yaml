@@ -1,0 +1,26 @@
+##################################################################################################
+# server service
+##################################################################################################
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: lab-test
+  labels:
+    app: lab-test
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lab-test
+  template:
+    metadata:
+      labels:
+        app: lab-test
+    spec:
+      containers:
+        - name: lab-test
+          image: smmile18/lab-server2:1.3
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: lab-test
+              containerPort: 3000
